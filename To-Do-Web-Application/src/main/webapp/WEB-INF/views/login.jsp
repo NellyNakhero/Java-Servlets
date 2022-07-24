@@ -1,4 +1,3 @@
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,13 +9,19 @@
 <body>
 <h1>Hey ${name}, Your To-do List </h1>
 
-<br/>
-save password? ${password}
-<br/>
+<p style="color:red"> ${errorMessage}</p>
 <form action="/login.do" method="post">
-Enter Your Name: <input type="text" name="name">
 
-<input type="submit">
+Name: <input type="text" name="name">
+<br/>
+
+Password: <input type="password" name="password">
+<br/>
+
+<br/>
+<br/>
+
+<input type="submit" >
 </form>
 
 

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.UserValidationService;
+
 @WebServlet(urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 	
@@ -26,6 +28,8 @@ public class LoginServlet extends HttpServlet {
 //		out.println("</html>");
 //}
 	
+	private UserValidationService service = new UserValidationService();
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
 		
 		
@@ -37,10 +41,21 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
-		 request.setAttribute("name", request.getParameter("name")); 
-		 request.setAttribute("password", request.getParameter("password")); 
+		 String name = request.getParameter("name");
+		 String password = request.getParameter("password");
+		 
+		 Boolean isIt = service.isUserValid(name, password);
+		 
+		 if(isIt) {
+			request.setAttribute("name", name); 
+		 	request.setAttribute("password", password); 
 
-		request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, reponse);
+		    request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, reponse);
+		 }
+		 else {
+			 	request.setAttribute("errorMessage","Invalid Credentials");
+			    request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, reponse);			
+		}
 	}
 
 //	private LoginService userValidationService = new LoginService();
