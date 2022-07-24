@@ -29,16 +29,18 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
 		
 		
-		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-
-		request.setAttribute("name", name);
-		
-		System.out.println(name + password);
 		
 		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, reponse);
 		
 		
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+		 request.setAttribute("name", request.getParameter("name")); 
+		 request.setAttribute("password", request.getParameter("password")); 
+
+		request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, reponse);
 	}
 
 //	private LoginService userValidationService = new LoginService();
