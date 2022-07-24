@@ -12,19 +12,34 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 	
-	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException{
-		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<head>");
-		out.println("<title>Welcome Amigo</title");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("My first Servlet");
-		out.println("</body>");
-		out.println("</html>");
-}
+//	@Override
+//	protected void doGet(HttpServletRequest request,
+//			HttpServletResponse response) throws ServletException, IOException{
+//		PrintWriter out = response.getWriter();
+//		out.println("<html>");
+//		out.println("<head>");
+//		out.println("<title>Welcome Amigo</title");
+//		out.println("</head>");
+//		out.println("<body>");
+//		out.println("My first Servlet");
+//		out.println("</body>");
+//		out.println("</html>");
+//}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+		
+		
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+
+		request.setAttribute("name", name);
+		
+		System.out.println(name + password);
+		
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, reponse);
+		
+		
+	}
 
 //	private LoginService userValidationService = new LoginService();
 //	//private TodoService todoService = new TodoService();

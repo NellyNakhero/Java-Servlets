@@ -25,3 +25,18 @@ Servlet - Is a very simple java class which can take a request in and can respon
 -> while creating a servelet, it should extend HttpServlet
 
 -> Annotations are soething that add more information to a class
+
+-> Java code can be written in JSP using scriplets
+
+```
+<% 
+System.out.println("Testing_Scriplets " + request.getParameter("name")); 
+Date now = new Date();
+%>
+
+<div> Current date is  <%=now%></div>
+
+```
+
+-> Scriplets form expression language
+-> Scrplets are not recomended in any real world applications
