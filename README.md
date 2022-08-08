@@ -40,3 +40,9 @@ Date now = new Date();
 
 -> Scriplets form expression language
 -> Scrplets are not recomended in any real world applications
+
+
+
+# To Buils and run the project
+    - Maven build (tomacat7:run)
+    - Open localhost 8080 on browser
