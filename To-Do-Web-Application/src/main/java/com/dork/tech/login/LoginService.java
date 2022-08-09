@@ -1,4 +1,4 @@
-package login;
+package com.dork.tech.login;
 
 public class LoginService {
 

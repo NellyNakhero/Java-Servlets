@@ -1,4 +1,4 @@
-package service;
+package com.dork.tech.service;
 
 public class UserValidationService {
 	public  Boolean isUserValid(String name, String password) {
